@@ -18,8 +18,7 @@ public class PersistenciaCamadaAplicacao {
 	
 	//CREATE
 
-	
-	public void ExemploCriacaoDeRegistro(String nome, BigDecimal codParc) throws Exception {
+	public void exemploCriacaoDeRegistro(String nome, BigDecimal codParc) throws Exception {
 		SessionHandle hnd = null;
 
 		try {
@@ -56,7 +55,7 @@ public class PersistenciaCamadaAplicacao {
 
 	//READ
 	
-	public void ExemploBuscaDeRegistroUnico(BigDecimal codParc) throws Exception {
+	public void exemploBuscaDeRegistroUnico(BigDecimal codParc) throws Exception {
 		SessionHandle hnd = null;
 
 		try {
@@ -84,7 +83,7 @@ public class PersistenciaCamadaAplicacao {
 	
 	//READ
 	
-	public void ExemploBuscaDeVariosRegistros(BigDecimal codParc, Timestamp dtVenc) throws Exception {
+	public void exemploBuscaDeVariosRegistros(BigDecimal codParc, Timestamp dtVenc) throws Exception {
 		SessionHandle hnd = null;
 
 		try {
@@ -116,7 +115,7 @@ public class PersistenciaCamadaAplicacao {
 	
 	//UPDATE
 	
-	public void ExemploAtualizacaoDeRegistroUnico(BigDecimal nufin) throws Exception {
+	public void exemploAtualizacaoDeRegistroUnico(BigDecimal nufin) throws Exception {
 		SessionHandle hnd = null;
 
 		try {
@@ -151,7 +150,7 @@ public class PersistenciaCamadaAplicacao {
 	
 	//UPDATE
 	
-	public void ExemploAtualizacaoDeVariosRegistros(BigDecimal codParc, Timestamp dtVenc) throws Exception {
+	public void exemploAtualizacaoDeVariosRegistros(BigDecimal codParc, Timestamp dtVenc) throws Exception {
 		SessionHandle hnd = null;
 
 		try {
@@ -159,7 +158,7 @@ public class PersistenciaCamadaAplicacao {
 			EntityFacade dwfFacade = EntityFacadeFactory.getDWFFacade();
 
 			FinderWrapper finderWrapper = new FinderWrapper(DynamicEntityNames.FINANCEIRO, "this.CODPARC = ? AND this.DTVENC > ?", new Object[]{codParc, dtVenc});
-			Collection<PersistentLocalEntity> persistentLocalEntityCollletion = dwfFacade.findByDynamicFinderAsVO(finderWrapper);
+			Collection<PersistentLocalEntity> persistentLocalEntityCollletion = dwfFacade.findByDynamicFinder(finderWrapper);
 			
 			for(PersistentLocalEntity persistentLocalEntity : persistentLocalEntityCollletion) {
 				
@@ -190,7 +189,7 @@ public class PersistenciaCamadaAplicacao {
 	
 	//DELETE
 	
-	public void ExemploExclusaoDeRegistroUnico(BigDecimal nuFin) throws Exception {
+	public void exemploExclusaoDeRegistroUnico(BigDecimal nuFin) throws Exception {
 		SessionHandle hnd = null;
 
 		try {
@@ -206,7 +205,7 @@ public class PersistenciaCamadaAplicacao {
 	
 	//DELETE
 	
-	public void ExemploExclusaoDeVariosRegistro(BigDecimal codParc,Timestamp dtVenc) throws Exception {
+	public void exemploExclusaoDeVariosRegistro(BigDecimal codParc,Timestamp dtVenc) throws Exception {
 		SessionHandle hnd = null;
 
 		try {
