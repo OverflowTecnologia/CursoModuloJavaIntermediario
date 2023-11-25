@@ -12,7 +12,7 @@ public class PersistenciaCamadaDeBancoDeDados {
 
 	//READ
 	
-	public void ExemploBuscaDeRegistrosSQL( BigDecimal nunota) throws Exception {
+	public void exemploBuscaDeRegistrosSQL( BigDecimal nunota) throws Exception {
 		JdbcWrapper jdbc = null;
 	    try {
 	      jdbc = EntityFacadeFactory.getDWFFacade().getJdbcWrapper();
@@ -54,7 +54,7 @@ public class PersistenciaCamadaDeBancoDeDados {
 	
 	//CRATE - UPDATE - DELETE
 	
-	public void ExemploUpdateInsertDeleteSQL( BigDecimal nunota) throws Exception {
+	public void exemploUpdateInsertDeleteSQL( BigDecimal nunota) throws Exception {
 		JdbcWrapper jdbc = null;
 	    try {
 	      jdbc = EntityFacadeFactory.getDWFFacade().getJdbcWrapper();
@@ -64,6 +64,10 @@ public class PersistenciaCamadaDeBancoDeDados {
 	       
 		        sql.appendSql("SEU UPDATE, INSERT ou DELETE AQUI");
 		        
+		        sql.appendSql(INSERT INTO table_name (column_a, column_b) VALUES ("value_a", "value_b"));
+		        
+		        sql.appendSql( DELETE FROM table_name WHERE condition);
+		       
 		        sql.setNamedParameter("NOME_VARIAVEL_NA_QUERY", variavel);
 	        
 	        
@@ -82,7 +86,7 @@ public class PersistenciaCamadaDeBancoDeDados {
 	
 	//READ
 	
-	public void ExemploBuscaComQueryGrande( BigDecimal nunota) throws Exception {
+	public void exemploBuscaComQueryGrande( BigDecimal nunota) throws Exception {
 		JdbcWrapper jdbc = null;
 	    try {
 	      jdbc = EntityFacadeFactory.getDWFFacade().getJdbcWrapper();
@@ -90,9 +94,7 @@ public class PersistenciaCamadaDeBancoDeDados {
 	      
 	      	/*
 	       
-		        sql.appendSql("SUA QUERY AQUI");
-		       
-		        OBS: NUNCA utilizar SELECT * nas queries desse metodo, pois ele ira carregar todas as Colunas da tabela sem necessidade.
+		        sql.loadSql("Classe na raiz no projeto onde se encontra o aquivo.sql", "exemploQueryGrande.sql");
 		       
 		        sql.setNamedParameter("NOME_VARIAVEL_NA_QUERY", variavel);
 	        
@@ -125,7 +127,7 @@ public class PersistenciaCamadaDeBancoDeDados {
 
 	//READ
 	
-	public BigDecimal ExemploBuscaSimplificadaSQL( BigDecimal nuNota) throws Exception {
+	public BigDecimal exemploBuscaSimplificadaSQL( BigDecimal nuNota) throws Exception {
 		
 		return NativeSql.getBigDecimal("COUNT(*)", "TGFITE", "NUNOTA = ?", new Object[] {nuNota});
 		

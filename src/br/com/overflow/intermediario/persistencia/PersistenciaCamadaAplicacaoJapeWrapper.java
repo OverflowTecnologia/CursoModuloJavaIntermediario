@@ -21,12 +21,12 @@ public class PersistenciaCamadaAplicacaoJapeWrapper {
 		try {
 			hnd = JapeSession.open();
 
-			JapeWrapper regitroDAO = JapeFactory.dao("AD_ATUALCUSPROD");
+			JapeWrapper regitroDAO = JapeFactory.dao("AD_ATUALCUSPROD"); //instancia a tabela em questão
 			regitroDAO.create()
-				.set("VLRCUSTO", vlrCustoAgrupamento)		
+				.set("VLRCUSTO", vlrCustoAgrupamento) // o metodo .set() insere os valores dentro da coluna informada		
 				.set("CODPROD", codprod)	
 				.set("CODEMP", codEmp)	
-				.save();
+				.save(); // funcao para salvar o registro
 			
 		} finally {
 			JapeSession.close(hnd);
@@ -42,7 +42,7 @@ public class PersistenciaCamadaAplicacaoJapeWrapper {
 		JapeSession.SessionHandle hnd = null;
 		try {
 			hnd = JapeSession.open();
-			JapeWrapper empresaDAO = JapeFactory.dao(DynamicEntityNames.EMPRESA);
+			JapeWrapper empresaDAO = JapeFactory.dao(DynamicEntityNames.EMPRESA); //instancia a tabela em questão
 			DynamicVO dynamicVO = empresaDAO.findByPK(codEmp);
 			
 			/*
@@ -66,10 +66,10 @@ public class PersistenciaCamadaAplicacaoJapeWrapper {
 	
 	public void exemploBuscaVariosRegistroJapeWrapper(String nomeEmpresa) throws Exception {
 
-		JapeSession.SessionHandle hnd = null;
+		SessionHandle hnd = null;
 		try {
 			hnd = JapeSession.open();
-			JapeWrapper empresaDAO = JapeFactory.dao(DynamicEntityNames.EMPRESA);
+			JapeWrapper empresaDAO = JapeFactory.dao(DynamicEntityNames.EMPRESA); //instancia a tabela em questão
 			Collection<DynamicVO> dynamicVOs = empresaDAO.find("RAZAOSOCIAL = ?", nomeEmpresa);
 			for (DynamicVO dynamicVO : dynamicVOs) {
 
@@ -102,7 +102,7 @@ public class PersistenciaCamadaAplicacaoJapeWrapper {
 			JapeWrapper financeiroDAO = JapeFactory.dao("Financeiro"); //instancia a tabela em questão
 			
 			financeiroDAO.prepareToUpdateByPK(nufin)
-				.set("CODTIPTIT", codTipTit) // o metodo .set() insere os valores dentro da coluna explicita
+				.set("CODTIPTIT", codTipTit) // o metodo .set() insere os valores dentro da coluna informada
 				.set("DTVENC", dtVenc)
 				.update(); // função que executa o Update
 			
@@ -119,8 +119,8 @@ public class PersistenciaCamadaAplicacaoJapeWrapper {
 		SessionHandle hnd = null;
 		try {
 			hnd = JapeSession.open();
-			JapeWrapper empresaDAO = JapeFactory.dao(DynamicEntityNames.FINANCEIRO);//instancia a tabela em questão
-			empresaDAO.delete(nufin); // função que executa o Delete com base na PK do registro
+			JapeWrapper empresaDAO = JapeFactory.dao(DynamicEntityNames.FINANCEIRO); //instancia a tabela em questão
+			empresaDAO.delete(nufin); //função que executa o Delete com base na PK do registro
 		} finally {
 			JapeSession.close(hnd);
 		}
