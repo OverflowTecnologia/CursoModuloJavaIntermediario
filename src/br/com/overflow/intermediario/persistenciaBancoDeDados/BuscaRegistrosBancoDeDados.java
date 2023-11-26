@@ -8,7 +8,7 @@ import br.com.sankhya.jape.dao.JdbcWrapper;
 import br.com.sankhya.jape.sql.NativeSql;
 import br.com.sankhya.modelcore.util.EntityFacadeFactory;
 
-public class BuscaRegistrosBancoDeBados implements AcaoRotinaJava {
+public class BuscaRegistrosBancoDeDados implements AcaoRotinaJava {
 
 	@Override
 	public void doAction(ContextoAcao contexto) throws Exception {
